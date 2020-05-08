@@ -1,0 +1,18 @@
+.mainheader{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 61px;
+    align-items: center;
+    background-color:blue ;
+    box-shadow: 0px 4px 5px rgba(217, 142, 0, 0.15);
+}
+.logo{
+    color: white;
+}
+
+.main-header .flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
