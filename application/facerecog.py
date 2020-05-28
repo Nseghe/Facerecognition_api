@@ -14,11 +14,11 @@ from PIL import Image
 from io import BytesIO
 import base64
 
-sess = tf.Session()
-graph = tf.get_default_graph()
+sess = tf.compat.v1.Session()
+graph = tf.compat.v1.get_default_graph()
 set_session(sess)
 
-model = load_model('./application/model/facenet_keras.h5')
+model = load_model('./application/model/facenet_keras.h5', compile=False)
 image_size = 160
 
 
