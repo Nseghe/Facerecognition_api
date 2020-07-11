@@ -32,7 +32,8 @@ def predict(img):
 
 
 def read_image(data):
-    _, encoded = data.split(",", 1)
+    # _, encoded = data.split(",", 1)
+    encoded = data
     im = Image.open(BytesIO(base64.b64decode(encoded)))
     return np.array(im)
 def prewhiten(x):
@@ -80,12 +81,13 @@ def calc_embs(data, margin=10, batch_size=1):
 
     return embs
 
-def calc_dist(*pair):
-    data = [None]*2
-    for i in range(len(pair)):
-      img_data = pair[i] 
-      embs = calc_embs(img_data)
-      data[i] = embs
+def calc_dist(image1, image2):# pair):
+    # data = [None]*2
+    # for i in range(len(pair)):
+    #   img_data = pair[i] 
+    #   embs = calc_embs(img_data)
+    #   data[i] = embs
+    data = [calc_embs(image1), calc_embs(image2)]
     return distance.euclidean(data[0], data[1])
 
 def calc_dist_plot(pair):

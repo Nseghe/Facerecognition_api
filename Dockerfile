@@ -8,8 +8,12 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-EXPOSE 5000
+#EXPOSE 5000
 
-ENTRYPOINT ["python3.6"]
+RUN adduser --disabled-password algostacks
+USER algostacks
 
-CMD ["app.py"]
+#ENTRYPOINT ["python3.6"]
+
+#CMD ["app.py"]
+CMD gunicorn --timeout 600 --bind 0.0.0.0:$PORT wsgi
